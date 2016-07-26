@@ -23,6 +23,7 @@
     "config": "^1.20.4",
     "express": "^4.13.4",
     "mongodb": "^2.1.6",
+    "phaxio": "^0.1.0",
     "request": "^2.72.0",
     "underscore-node": "^0.1.2"
   },
