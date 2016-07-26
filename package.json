@@ -1,0 +1,32 @@
+{
+  "name": "chatfax",
+  "version": "0.0.1",
+  "description": "facebook chatbot backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "jshint --exclude-path=.gitignore .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metalfingers/chatfax.git"
+  },
+  "author": "@metalfingers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metalfingers/chatfax/issues"
+  },
+  "homepage": "https://github.com/metalfingers/chatfax#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "config": "^1.20.4",
+    "express": "^4.13.4",
+    "mongodb": "^2.1.6",
+    "request": "^2.72.0",
+    "underscore-node": "^0.1.2"
+  },
+  "engines": {
+    "node": "~4.1.2"
+  }
+}
