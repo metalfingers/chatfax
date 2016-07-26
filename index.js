@@ -443,13 +443,13 @@ function processMessageText (user, messageText, senderID) {
         });
 
       } else if (messageText.toLowerCase() === 'notifications') {
-        notifications(senderID, 'a few notifications');
+        // notifications(senderID, 'a few notifications');
       } else if (messageText.toLowerCase() === 'settings' ||
                  messageText.toLowerCase() === 'change settings') {
-          updateSettings(senderID);
+          // updateSettings(senderID);
       } else if (messageText.toLowerCase() === 'help' ||
                  messageText.toLowerCase() === 'stop notifications') {
-          help(senderID, messageText);
+          // help(senderID, messageText);
       } else {
           sendTextMessage(senderID, "I don't understand what you mean. Type \"help\" for a list of commands.");
       }
@@ -566,133 +566,6 @@ function sendTextMessage(recipientId, messageText) {
 
   graph.callSendAPI(messageData);
 }
-
-
-
-
-
-function notifications(recipientId, messageText){
-  console.log("inside of notifications");
-  var messageData = {
-    "recipient":{
-      "id": recipientId
-    },
-    "message":{
-      "attachment": {
-        "type": "template",
-        "payload":{
-          "template_type":"button",
-          "text": messageText,
-          "buttons":[
-            {
-              "type":"postback",
-              "title": "8:00 AM",
-              "payload":"8:00 AM"
-            },
-            {
-              "type":"postback",
-              "title":"5:00 PM",
-              "payload":"5:00 PM"
-            },
-            {
-              "type":"postback",
-              "title":"Another time",
-              "payload":"Another time"
-            },
-            {
-              "type":"postback",
-              "title":"Skip",
-              "payload":"Skip"
-            }
-          ]
-        }
-      }
-    }
-  }
-
-  graph.callSendAPI(messageData);
-}
-
-function help(recipientId, messageText){
-  console.log("inside of help");
-
-  if(messageText == 'stop notifications'){
-    sendTextMessage(recipientId, "You will not receive any more notifications.");
-
-  } else {
-    
-    sendTextMessage(recipientId, "You can say things like: " + 
-                                        "\n  - bikes at work " +
-                                        "\n  - bikes at home" +
-                                        "\n  - bikes near <address or landmark>" +
-                                        "\n  - settings" +
-                                        "\n  - notifications" +
-                                        "\n  - help");
-
-    var messageData = {
-        "recipient":{
-          "id":recipientId
-        },
-        "message":{
-          "text":"or choose one of these options:",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"change settings",
-              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-            },
-            {
-              "content_type":"text",
-              "title":"stop notifications",
-              "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-            }
-          ]
-        }
-      }
-      graph.callSendAPI(messageData);
-  }
-  
-
-}
-  
-
-function updateSettings (recipientID) {
-  console.log("inside of updateSettings");
-  var messageData = {
-     recipient :{
-       id : recipientID 
-    },
-     message :{
-       attachment :{
-         type : "template" ,
-         payload :{
-           template_type : "button" ,
-           text : "Which settings would you like to change?" ,
-           buttons :[
-            {
-               type : "postback" ,
-               title : "Home Address" ,
-               payload : 'homeAddress' 
-            },
-            {
-               type : "postback" ,
-               title : "Work Address" ,
-               payload : 'workAddress' 
-            },
-            {
-               type : "postback" ,
-               title : "Change Alerts" ,
-               payload : 'changeAlerts' 
-            }
-          ]
-        }
-      }
-    }
-  }
-
-  graph.callSendAPI(messageData);
-}
-
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid 
